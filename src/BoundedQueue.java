@@ -43,7 +43,7 @@ public class BoundedQueue {
 
         items[enqueueIndex] = newInt;
 
-        enqueueIndex = (++enqueueIndex == items.length) ? 0 : enqueueIndex;
+        enqueueIndex = ++enqueueIndex % items.length;
         count++;
     }
 
@@ -60,7 +60,8 @@ public class BoundedQueue {
         int item = items[dequeueIndex];
 
         items[dequeueIndex] = 0;
-        dequeueIndex = (++dequeueIndex == items.length) ? 0 : dequeueIndex;
+
+        dequeueIndex = ++dequeueIndex % items.length;
         count--;
 
         return item;
