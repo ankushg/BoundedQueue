@@ -2,9 +2,10 @@ import java.util.NoSuchElementException;
 
 /**
  * BoundedQueue was created to meet the following challenge:
- *
- * Using only primitive types, implement a bounded queue to store integers.
- * The data structure should be optimized for algorithmic runtime, memory usage, and memory throughput.
+ * <ul>
+ *     <li>Using only primitive types, implement a bounded queue to store integers.</li>
+ *     <li>The data structure should be optimized for algorithmic runtime, memory usage, and memory throughput.</li>
+ * </ul>
  *
  * Created by ankush on 10/21/14.
  */
@@ -47,7 +48,7 @@ public class BoundedQueue {
     }
 
     /**
-     * Get the value at the beginning of the queue
+     * Get the value at the beginning of the queue, and remove it from the queue
      *
      * @return the int at the beginning of the queue
      */
@@ -63,6 +64,37 @@ public class BoundedQueue {
         count--;
 
         return item;
+    }
+
+    /**
+     * Get the value at the beginning of the queue, without removing it from the queue
+     *
+     * @return the int at the beginning of the queue
+     */
+    public int peek() {
+        if (count <= 0) {
+            throw new NoSuchElementException();
+        }
+
+        return items[dequeueIndex];
+    }
+
+    /**
+     * Check if the queue is empty or not
+     *
+     * @return <code>true</code> if the queue is empty, <code>false</code> if it is not
+     */
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
+    /**
+     * Check the size of the queue
+     *
+     * @return the size of the queue
+     */
+    public int size() {
+        return count;
     }
 
     @Override
